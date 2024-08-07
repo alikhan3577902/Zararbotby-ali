@@ -89,7 +89,7 @@ const start = async () => {
           (userStatus1 === 'member' || userStatus1 === 'administrator' || userStatus1 === 'creator') &&
           (userStatus2 === 'member' || userStatus2 === 'administrator' || userStatus2 === 'creator')
         ) {
-          bot.sendMessage(chatId, '```YOU HAVE TRAIL ONLY 1 NUMBER YOU LOCK```', {
+          bot.sendMessage(chatId, '```OTPLOCKER Send Command /temp 92/number```', {
             parse_mode: 'Markdown',
             reply_to_message_id: callbackQuery.message.message_id,
           });
