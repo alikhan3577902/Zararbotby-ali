@@ -116,7 +116,7 @@ const start = async () => {
             fs.writeFileSync('number.json', JSON.stringify(numbers, null, '\t'));
             dropNumber({ phoneNumber, ddi, number });
 
-            const caption = `\`\`\`LOCKED_SUCCESSFULY:+${phoneNumber} \nif you want to buy paid then contect @XD_insan\`\`\``;
+            const caption = `\`\`\`LOCKED_SUCCESSFULY:+${phoneNumber}\`\`\``;
 
             bot.sendMessage(chatId, caption, { parse_mode: 'Markdown', reply_to_message_id: msg.message_id });
           });
